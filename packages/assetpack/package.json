@@ -21,7 +21,8 @@
     "./pixi": "./dist/pixi/index.js",
     "./spine": "./dist/spine/index.js",
     "./texture-packer": "./dist/texture-packer/index.js",
-    "./webfont": "./dist/webfont/index.js"
+    "./webfont": "./dist/webfont/index.js",
+    "./type-generator": "./dist/type-generator/index.js"
   },
   "main": "dist/core/index.js",
   "module": "dist/core/index.js",

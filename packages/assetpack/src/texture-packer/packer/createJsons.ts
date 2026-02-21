@@ -17,7 +17,7 @@ export function createJsons(
     options: {
         textureName: string;
         resolution: number;
-        textureFormat: 'png' | 'jpg';
+        textureFormat: 'png' | 'jpg' | 'webp';
         nameStyle: 'short' | 'relative';
         removeFileExtension: boolean;
         autodetectAnimations?: boolean;

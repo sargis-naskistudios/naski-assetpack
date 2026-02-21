@@ -10,12 +10,16 @@
 </p>
 <br>
 
-AssetPack is a tool for optimising assets for the web. It can be used to transform, combine, compress assets.
+naski-assetpack is a tool for optimising assets for the web. It can be used to transform, combine, compress assets.
 Any asset that you want to transform or optimise into something else can be done with AssetPack.
 
 AssetPack is framework agnostic, and can be used with any framework you like, such as PixiJS, Threejs, Phaser, etc.
 It uses a plugin based system to allow you to create your own plugins to do whatever you want with your assets.
 
+The fork was made to support .webp format as input.
+
 ---
 
 Check out the docs on how to get started with AssetPack: https://pixijs.io/assetpack/
+
+Original repo: https://github.com/pixijs/assetpack

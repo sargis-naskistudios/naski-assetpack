@@ -6,7 +6,7 @@ import { packTextures } from './packer/packTextures.js';
 import type { Asset, AssetPipe, PluginOptions } from '../core/index.js';
 import type { PackTexturesOptions, TexturePackerFormat } from './packer/packTextures.js';
 
-export type TexturePackerTags = 'tps' | 'fix' | 'jpg' | 'nomip';
+export type TexturePackerTags = 'tps' | 'fix' | 'jpg' | 'webp' | 'nomip';
 
 export interface TexturePackerOptions extends PluginOptions {
     /** Options for the texture packer. */
@@ -69,6 +69,7 @@ export function texturePacker(_options: TexturePackerOptions = {}): AssetPipe<Te
             tps: 'tps',
             fix: 'fix',
             jpg: 'jpg',
+            webp: 'webp',
             nomip: 'nomip',
         },
         test(asset: Asset) {
@@ -99,7 +100,7 @@ export function texturePacker(_options: TexturePackerOptions = {}): AssetPipe<Te
                 };
             }
 
-            const globPath = `${asset.path}/**/*.{jpg,png,gif}`;
+            const globPath = `${asset.path}/**/*.{jpg,png,webp,gif}`;
             const files = await glob(globPath);
 
             if (files.length === 0) {
@@ -114,7 +115,13 @@ export function texturePacker(_options: TexturePackerOptions = {}): AssetPipe<Te
                 }),
             );
 
-            const textureFormat = (asset.metaData[this.tags!.jpg] ? 'jpg' : 'png') as TexturePackerFormat;
+            let textureFormat: TexturePackerFormat = 'png';
+
+            if (asset.metaData[this.tags!.jpg]) {
+                textureFormat = 'jpg';
+            } else if (asset.metaData[this.tags!.webp]) {
+                textureFormat = 'webp';
+            }
 
             const texturePackerOptions = {
                 ...texturePacker,
